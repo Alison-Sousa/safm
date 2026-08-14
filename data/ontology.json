@@ -1,0 +1,154 @@
+{
+  "version": "3.0",
+  "sources": [
+    {"id":"esporte","name":"Minist\u00e9rio do Esporte","short":"MESP","url":"https://www.gov.br/esporte/pt-br/acesso-a-informacao/dados-abertos","description":"Governan\u00e7a e dados p\u00fablicos do esporte brasileiro.","accent":"#facc15"},
+    {"id":"cbf","name":"Confedera\u00e7\u00e3o Brasileira de Futebol","short":"CBF","url":"https://www.cbf.com.br/futebol-brasileiro/competicoes","description":"Competi\u00e7\u00f5es e partidas oficiais do futebol brasileiro.","accent":"#86efac"},
+    {"id":"cvm","name":"CVM","short":"CVM","url":"https://dados.cvm.gov.br/","description":"Companhias abertas, fundos e documentos do mercado de capitais.","accent":"#6ee7b7"},
+    {"id":"bcb","name":"Banco Central do Brasil","short":"BCB","url":"https://dadosabertos.bcb.gov.br/","description":"Juros, inflação, câmbio, crédito e séries econômico-financeiras.","accent":"#8cc8ff"},
+    {"id":"ibge","name":"IBGE / SIDRA","short":"IBGE","url":"https://servicodados.ibge.gov.br/api/docs/agregados?versao=3","description":"PIB, população, trabalho, empresas e estatísticas territoriais.","accent":"#7dd3fc"},
+    {"id":"tesouro","name":"Tesouro / SICONFI","short":"STN","url":"https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-api-de-dados-abertos","description":"Contas públicas, RREO, RGF, DCA e Matriz de Saldos Contábeis.","accent":"#f6cf6a"},
+    {"id":"datasus","name":"DATASUS","short":"SUS","url":"https://datasus.saude.gov.br/transferencia-de-arquivos/","description":"Mortalidade, nascimentos, internações e informações de saúde.","accent":"#fb7185"},
+    {"id":"inep","name":"INEP","short":"INEP","url":"https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos","description":"Censo Escolar, ensino superior, ENEM e indicadores educacionais.","accent":"#c4b5fd"},
+    {"id":"mte","name":"Ministério do Trabalho","short":"MTE","url":"https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho","description":"Novo CAGED, RAIS e estatísticas do mercado de trabalho formal.","accent":"#fdba74"},
+    {"id":"comex","name":"Comex Stat","short":"COMEX","url":"https://comexstat.mdic.gov.br/pt/home","description":"Exportações e importações brasileiras.","accent":"#67e8f9"},
+    {"id":"aneel","name":"ANEEL","short":"ANEEL","url":"https://dadosabertos.aneel.gov.br/","description":"Tarifas, geração, distribuição e qualidade da energia elétrica.","accent":"#fde047"},
+    {"id":"anp","name":"ANP","short":"ANP","url":"https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos","description":"Combustíveis, petróleo e gás natural.","accent":"#fda4af"},
+    {"id":"susep","name":"SUSEP","short":"SUSEP","url":"https://www.gov.br/susep/pt-br/central-de-conteudos/dados-abertos","description":"Seguros, previdência aberta e capitalização.","accent":"#a7f3d0"},
+    {"id":"dadosgov","name":"Dados.gov.br","short":"GOV","url":"https://dados.gov.br/","description":"Catálogo nacional de dados abertos.","accent":"#94a3b8"}
+  ],
+  "dimensions": [
+    {
+      "id":"sports",
+      "label":"Futebol e esporte",
+      "question":"Que parte do futebol ou do esporte voc\u00ea quer observar?",
+      "aliases":["futebol","esporte","campeonato brasileiro","brasileirao","clubes de futebol","times de futebol","partidas de futebol","financas do futebol"],
+      "context":["futebol","esporte","esportivo","campeonato","brasileirao","clube","clubes","time","times","jogador","jogadores","partida","partidas","gol","gols"],
+      "measures":["sports_matches","sports_rankings","sports_club_finance"]
+    },
+    {
+      "id":"corporateFinance",
+      "label":"Finanças da empresa",
+      "question":"Como você quer medir finanças?",
+      "aliases":["financas da empresa","financas empresas","financas corporativas","desempenho financeiro","rentabilidade","estrutura de capital","endividamento","liquidez","roe","roa"],
+      "context":["empresa","empresas","companhia","companhias","firma","firmas","negocio","negocios"],
+      "measures":["cvm_roe","cvm_roa","cvm_leverage","cvm_current_ratio","cvm_operating_margin","cvm_cash"]
+    },
+    {
+      "id":"firmGrowth",
+      "label":"Crescimento da empresa",
+      "question":"Como você quer medir crescimento?",
+      "aliases":["crescimento da empresa","crescimento das empresas","crescimento empresarial","crescimento firma","crescimento das firmas","crescimento negocio","crescer empresa","expansao empresa"],
+      "context":["crescimento","crescer","expansao","empresa","empresas","firma","firmas"],
+      "measures":["cvm_revenue_growth","cvm_asset_growth","cvm_revenue","cvm_assets","cvm_net_income","cvm_equity"]
+    },
+    {
+      "id":"macro",
+      "label":"Condições macroeconômicas",
+      "question":"Quais condições macroeconômicas entram na pesquisa?",
+      "aliases":["macroeconomia","economia brasileira","juros inflacao","selic","inflacao","cambio","dolar","politica monetaria"],
+      "context":["selic","juros","inflacao","ipca","dolar","cambio","macro"],
+      "measures":["bcb_selic","bcb_ipca","bcb_usd"]
+    },
+    {
+      "id":"foreignTrade",
+      "label":"Comércio exterior",
+      "question":"Qual indicador do comércio exterior entra na pesquisa?",
+      "aliases":["comercio exterior","balanca comercial","exportacoes importacoes","exportação e importação","setor externo","corrente de comercio"],
+      "context":["exportacao","exportacoes","importacao","importacoes","balanca","comercio","exterior","saldo"],
+      "measures":["comex_exports","comex_imports","comex_balance","comex_trade_flow"]
+    },
+    {
+      "id":"municipalEconomy",
+      "label":"Economia local",
+      "question":"Como você quer representar a economia local?",
+      "aliases":["pib municipal","economia municipal","economia local","renda municipal","populacao municipal","municipios"],
+      "context":["municipio","municipios","cidade","cidades","pib","populacao"],
+      "measures":["ibge_gdp","ibge_gdp_pc","ibge_population"]
+    },
+    {
+      "id":"publicFinance",
+      "label":"Finanças públicas",
+      "question":"Qual parte das finanças públicas interessa?",
+      "aliases":["financas publicas","gasto publico","gastos publicos","despesa publica","receita publica","orcamento publico","divida publica","transferencias federais"],
+      "context":["municipio","municipios","estado","estados","governo","publico","publica"],
+      "measures":["siconfi_health","siconfi_revenue","siconfi_debt","siconfi_transfers"]
+    },
+    {
+      "id":"health",
+      "label":"Saúde",
+      "question":"Qual desfecho de saúde você quer observar?",
+      "aliases":["saude","mortalidade","obitos","mortes","internacoes","nascimentos","mortalidade feminina","mortalidade infantil","mortalidade materna"],
+      "context":["saude","mortalidade","obito","obitos","morte","mortes","mulher","mulheres","infantil","materna"],
+      "measures":["datasus_female_mortality","datasus_infant_mortality","datasus_maternal_mortality","datasus_hospitalizations"]
+    },
+    {
+      "id":"labor",
+      "label":"Mercado de trabalho",
+      "question":"Qual indicador de trabalho você quer usar?",
+      "aliases":["emprego","desemprego","mercado de trabalho","admissoes","demissoes","salarios","caged","rais"],
+      "context":["emprego","trabalho","admissao","admissoes","demissao","demissoes","salario","salarios"],
+      "measures":["mte_jobs","mte_wages"]
+    },
+    {
+      "id":"education",
+      "label":"Educação",
+      "question":"Qual indicador educacional entra na pesquisa?",
+      "aliases":["educacao","escola","escolas","matriculas","censo escolar","ensino superior","enem","ideb"],
+      "context":["educacao","escola","escolas","matricula","matriculas","ensino","enem","ideb"],
+      "measures":["inep_enrollment","inep_schools","inep_higher_ed"]
+    }
+  ],
+  "measures": [
+    {"id":"sports_matches","label":"Partidas e resultados","description":"Jogos, placares, rodadas, mandos e competi\u00e7\u00f5es oficiais.","source":"cbf","domain":"match","build":false,"metric":"partidas","frequencies":["daily","annual"],"startYear":2012,"endYear":"source","unit":"partidas","tags":["partidas futebol","jogos futebol","resultados futebol","placares","gols"]},
+    {"id":"sports_rankings","label":"Classifica\u00e7\u00e3o e desempenho","description":"Pontos, vit\u00f3rias, derrotas, gols e posi\u00e7\u00e3o por clube.","source":"cbf","domain":"team-year","build":false,"metric":"desempenho_clube","frequencies":["annual"],"startYear":2012,"endYear":"source","unit":"clubes","tags":["classificacao futebol","desempenho clubes","ranking","brasileirao"]},
+    {"id":"sports_club_finance","label":"Finan\u00e7as dos clubes","description":"Receitas, despesas, d\u00edvidas e documentos econ\u00f4mico-financeiros de clubes.","source":"esporte","domain":"club-year","build":false,"metric":"financas_clubes","frequencies":["annual"],"startYear":2015,"endYear":"source","unit":"R$","tags":["futebol financas","financas futebol","receita clubes","divida clubes","balanco clubes"]},
+    {"id":"cvm_roe","label":"ROE","description":"Lucro líquido em relação ao patrimônio líquido.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"roe","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"%","tags":["rentabilidade","retorno patrimonio","roe"]},
+    {"id":"cvm_roa","label":"ROA","description":"Lucro líquido em relação ao ativo total.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"roa","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"%","tags":["rentabilidade","retorno ativos","roa"]},
+    {"id":"cvm_leverage","label":"Endividamento","description":"Passivos em relação ao ativo total.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"leverage","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"%","tags":["divida","endividamento","alavancagem"]},
+    {"id":"cvm_current_ratio","label":"Liquidez corrente","description":"Ativo circulante em relação ao passivo circulante.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"current_ratio","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"x","tags":["liquidez","capital giro"]},
+    {"id":"cvm_operating_margin","label":"Margem operacional","description":"Resultado operacional em relação à receita.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"operating_margin","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"%","tags":["margem","operacional","ebit"]},
+    {"id":"cvm_cash","label":"Caixa","description":"Caixa e equivalentes reportados pela companhia.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"cash","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"R$","tags":["caixa","disponibilidades"]},
+
+    {"id":"cvm_revenue_growth","label":"Crescimento da receita","description":"Variação anual da receita reportada.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"revenue_growth","frequencies":["annual"],"startYear":2011,"endYear":"lastFullYear","unit":"%","tags":["crescimento receita","vendas","faturamento"]},
+    {"id":"cvm_asset_growth","label":"Crescimento dos ativos","description":"Variação anual do ativo total.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"asset_growth","frequencies":["annual"],"startYear":2011,"endYear":"lastFullYear","unit":"%","tags":["crescimento ativos","tamanho"]},
+    {"id":"cvm_revenue","label":"Receita","description":"Receita de venda de bens e/ou serviços.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"revenue","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"R$","tags":["receita","vendas","faturamento"]},
+    {"id":"cvm_assets","label":"Ativo total","description":"Ativo total reportado no balanço.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"assets","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"R$","tags":["ativo","tamanho empresa"]},
+    {"id":"cvm_net_income","label":"Lucro líquido","description":"Lucro ou prejuízo do período.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"net_income","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"R$","tags":["lucro","resultado"]},
+    {"id":"cvm_equity","label":"Patrimônio líquido","description":"Patrimônio líquido reportado no balanço.","source":"cvm","domain":"company-year","build":true,"connector":"cvm-dfp","metric":"equity","frequencies":["annual"],"startYear":2010,"endYear":"lastFullYear","unit":"R$","tags":["patrimonio","equity"]},
+
+    {"id":"bcb_selic","label":"Selic","description":"Taxa Selic acumulada no ano.","source":"bcb","domain":"br-time","build":true,"connector":"bcb-sgs","series":4390,"metric":"selic","frequencies":["annual"],"startYear":1986,"endYear":"currentYear","unit":"%","aggregation":"compound","tags":["selic","juros","taxa juros"]},
+    {"id":"bcb_ipca","label":"IPCA","description":"Variação acumulada do IPCA no ano.","source":"bcb","domain":"br-time","build":true,"connector":"bcb-sgs","series":433,"metric":"ipca","frequencies":["annual"],"startYear":1980,"endYear":"currentYear","unit":"%","aggregation":"compound","tags":["ipca","inflacao","precos"]},
+    {"id":"bcb_usd","label":"Dólar comercial","description":"Cotação média anual de venda do dólar comercial.","source":"bcb","domain":"br-time","build":true,"connector":"bcb-sgs","series":1,"metric":"usd_brl","frequencies":["annual"],"startYear":1984,"endYear":"currentYear","unit":"R$/US$","aggregation":"mean","tags":["dolar","cambio","usd"]},
+
+    {"id":"comex_exports","label":"Exportações","description":"Valor anual exportado pelo Brasil, em dólares FOB.","source":"comex","domain":"br-time","build":true,"connector":"comex-totals","metric":"exportacoes_usd","frequencies":["annual"],"startYear":1997,"endYear":"currentYear","unit":"US$ FOB","tags":["exportacoes","valor exportado","vendas externas"]},
+    {"id":"comex_imports","label":"Importações","description":"Valor anual importado pelo Brasil, em dólares FOB.","source":"comex","domain":"br-time","build":true,"connector":"comex-totals","metric":"importacoes_usd","frequencies":["annual"],"startYear":1997,"endYear":"currentYear","unit":"US$ FOB","tags":["importacoes","valor importado","compras externas"]},
+    {"id":"comex_balance","label":"Saldo comercial","description":"Exportações menos importações no ano.","source":"comex","domain":"br-time","build":true,"connector":"comex-totals","metric":"saldo_comercial_usd","frequencies":["annual"],"startYear":1997,"endYear":"currentYear","unit":"US$ FOB","tags":["saldo comercial","balanca comercial","superavit","deficit"]},
+    {"id":"comex_trade_flow","label":"Corrente de comércio","description":"Soma das exportações e importações no ano.","source":"comex","domain":"br-time","build":true,"connector":"comex-totals","metric":"corrente_comercio_usd","frequencies":["annual"],"startYear":1997,"endYear":"currentYear","unit":"US$ FOB","tags":["corrente de comercio","fluxo comercial","comercio total"]},
+
+    {"id":"ibge_gdp","label":"PIB municipal","description":"Produto Interno Bruto a preços correntes.","source":"ibge","domain":"geo-year","build":false,"connector":"ibge-aggregate","table":5938,"variableSearch":"Produto Interno Bruto a preços correntes","metric":"pib","frequencies":["annual"],"startYear":2002,"endYear":"source","unit":"R$ mil","geo":["municipality","state","brazil"],"tags":["pib","produto interno bruto","economia"]},
+    {"id":"ibge_gdp_pc","label":"PIB per capita","description":"PIB municipal por habitante.","source":"ibge","domain":"geo-year","build":false,"connector":"ibge-aggregate","table":5938,"variableSearch":"Produto Interno Bruto per capita","metric":"pib_per_capita","frequencies":["annual"],"startYear":2002,"endYear":"source","unit":"R$","geo":["municipality","state","brazil"],"tags":["pib per capita","renda","economia"]},
+    {"id":"ibge_population","label":"População","description":"População residente estimada.","source":"ibge","domain":"geo-year","build":false,"connector":"ibge-aggregate","table":6579,"variableSearch":"População residente estimada","metric":"populacao","frequencies":["annual"],"startYear":2001,"endYear":"source","unit":"pessoas","geo":["municipality","state","brazil"],"tags":["populacao","habitantes","demografia"]},
+
+    {"id":"siconfi_health","label":"Despesa pública em saúde","description":"Execução orçamentária da função saúde no SICONFI.","source":"tesouro","domain":"geo-year","build":false,"metric":"despesa_saude","frequencies":["annual","bimonthly"],"startYear":2013,"endYear":"currentYear","unit":"R$","geo":["municipality","state"],"tags":["gasto saude","despesa saude","financiamento saude"]},
+    {"id":"siconfi_revenue","label":"Receita pública","description":"Receitas dos entes subnacionais no SICONFI.","source":"tesouro","domain":"geo-year","build":false,"metric":"receita_publica","frequencies":["annual","bimonthly"],"startYear":2013,"endYear":"currentYear","unit":"R$","geo":["municipality","state"],"tags":["receita publica","arrecadacao"]},
+    {"id":"siconfi_debt","label":"Dívida consolidada","description":"Indicadores de dívida do Relatório de Gestão Fiscal.","source":"tesouro","domain":"geo-year","build":false,"metric":"divida","frequencies":["annual","four_monthly"],"startYear":2015,"endYear":"currentYear","unit":"R$","geo":["municipality","state"],"tags":["divida","endividamento publico"]},
+    {"id":"siconfi_transfers","label":"Transferências","description":"Transferências e receitas intergovernamentais.","source":"tesouro","domain":"geo-year","build":false,"metric":"transferencias","frequencies":["annual"],"startYear":2013,"endYear":"currentYear","unit":"R$","geo":["municipality","state"],"tags":["transferencias","repasses","fpm"]},
+
+    {"id":"datasus_female_mortality","label":"Mortalidade feminina","description":"Óbitos de pessoas do sexo feminino, com recortes por idade, causa e localidade.","source":"datasus","domain":"geo-year","build":false,"metric":"mortalidade_feminina","frequencies":["annual"],"startYear":1979,"endYear":"source","unit":"óbitos","geo":["municipality","state","brazil"],"tags":["mortalidade feminina","obitos mulheres","mortes mulheres"]},
+    {"id":"datasus_infant_mortality","label":"Mortalidade infantil","description":"Óbitos infantis segundo localidade e características do óbito.","source":"datasus","domain":"geo-year","build":false,"metric":"mortalidade_infantil","frequencies":["annual"],"startYear":1979,"endYear":"source","unit":"óbitos","geo":["municipality","state","brazil"],"tags":["mortalidade infantil","obitos infantis","neonatal"]},
+    {"id":"datasus_maternal_mortality","label":"Mortalidade materna","description":"Óbitos maternos e recortes relacionados.","source":"datasus","domain":"geo-year","build":false,"metric":"mortalidade_materna","frequencies":["annual"],"startYear":1979,"endYear":"source","unit":"óbitos","geo":["municipality","state","brazil"],"tags":["mortalidade materna","obitos maternos"]},
+    {"id":"datasus_hospitalizations","label":"Internações","description":"Internações hospitalares do SUS.","source":"datasus","domain":"geo-time","build":false,"metric":"internacoes","frequencies":["monthly","annual"],"startYear":1992,"endYear":"source","unit":"internações","geo":["municipality","state","brazil"],"tags":["internacoes","hospital","sus"]},
+
+    {"id":"mte_jobs","label":"Emprego formal","description":"Admissões, desligamentos e saldo do emprego formal.","source":"mte","domain":"geo-time","build":false,"metric":"emprego_formal","frequencies":["monthly","annual"],"startYear":2020,"endYear":"currentYear","unit":"vínculos","geo":["municipality","state","brazil"],"tags":["emprego","admissoes","demissoes","caged"]},
+    {"id":"mte_wages","label":"Remuneração","description":"Remuneração e vínculos formais na RAIS.","source":"mte","domain":"geo-year","build":false,"metric":"remuneracao","frequencies":["annual"],"startYear":1985,"endYear":"source","unit":"R$","geo":["municipality","state","brazil"],"tags":["salario","remuneracao","rais"]},
+
+    {"id":"inep_enrollment","label":"Matrículas","description":"Matrículas da educação básica no Censo Escolar.","source":"inep","domain":"geo-year","build":false,"metric":"matriculas","frequencies":["annual"],"startYear":1995,"endYear":"source","unit":"matrículas","geo":["municipality","state","brazil"],"tags":["matriculas","censo escolar"]},
+    {"id":"inep_schools","label":"Escolas","description":"Estabelecimentos e características da educação básica.","source":"inep","domain":"geo-year","build":false,"metric":"escolas","frequencies":["annual"],"startYear":1995,"endYear":"source","unit":"escolas","geo":["municipality","state","brazil"],"tags":["escolas","estabelecimentos"]},
+    {"id":"inep_higher_ed","label":"Ensino superior","description":"Instituições, cursos, matrículas e concluintes.","source":"inep","domain":"geo-year","build":false,"metric":"ensino_superior","frequencies":["annual"],"startYear":1995,"endYear":"source","unit":"registros","geo":["municipality","state","brazil"],"tags":["ensino superior","universidade","faculdade"]}
+  ],
+  "controlSuggestions": {
+    "company-year":["cvm_assets","cvm_leverage","cvm_roa"],
+    "br-time":["bcb_ipca","bcb_selic","bcb_usd"],
+    "geo-year":["ibge_population","ibge_gdp_pc","ibge_gdp"]
+  }
+}

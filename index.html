@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081421">
+  <meta name="description" content="RotaDados Brasil — encontre, combine e baixe dados oficiais para pesquisa.">
+  <title>RotaDados Brasil</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar shell">
+    <a class="brand" href="#top" aria-label="RotaDados Brasil">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 40 40"><path d="M8 28c5.2 0 6.7-5.2 9-9.2 2-3.6 4.1-6.8 8.5-6.8 3.3 0 5.6 2 7 4.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><circle cx="8" cy="28" r="3.8" fill="currentColor"/><circle cx="25.5" cy="12" r="3.8" fill="currentColor"/><circle cx="32.5" cy="16.5" r="3.8" fill="currentColor"/></svg>
+      </span>
+      <span><strong>RotaDados</strong><small>Brasil</small></span>
+    </a>
+    <nav>
+      <a href="#metodos">Modelagem</a>
+      <a href="#fontes">Fontes</a>
+      <button id="openAbout" type="button">Sobre</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="eyebrow"><i></i> dados oficiais para pesquisa</div>
+      <h1>Da ideia à <em>base pronta.</em></h1>
+      <p>Descreva o que você quer estudar. O site reconhece temas e erros de digitação, organiza as variáveis e monta a base com dados da fonte.</p>
+
+      <form id="researchForm" class="research-box" autocomplete="off">
+        <label class="sr-only" for="researchInput">Descreva sua pesquisa</label>
+        <textarea id="researchInput" rows="3" placeholder="Ex.: finanças afeta crescimento das empresas"></textarea>
+        <div class="research-footer">
+          <span class="keyhint"><kbd>Ctrl</kbd><kbd>Enter</kbd> para começar</span>
+          <button class="main-button" type="submit"><span>Começar</span><b>→</b></button>
+        </div>
+      </form>
+
+      <div id="liveAssist" class="live-assist" aria-live="polite"></div>
+
+      <div class="examples" aria-label="Exemplos">
+        <button class="example-chip" type="button" data-example="finanças afeta crescimento das empresas">Empresas</button>
+        <button class="example-chip" type="button" data-example="quero estudar Selic, inflação e dólar desde 1995">Macroeconomia</button>
+        <button class="example-chip" type="button" data-example="exportações, importações e saldo comercial desde 1997">Comércio exterior</button>
+        <button class="example-chip" type="button" data-example="quero estudar ROE, endividamento e Selic das empresas desde 2021">Empresas + macro</button>
+      </div>
+    </section>
+
+    <div id="workflowArea" class="shell"></div>
+
+    <section id="metodos" class="methods-section shell">
+      <div class="section-heading">
+        <span>Modelagem econométrica</span>
+        <h2>Estime o modelo na base pronta.</h2>
+        <p>Monte a base, escolha o método e veja coeficientes, erros-padrão, p-valores e intervalos de confiança no próprio site.</p>
+      </div>
+      <div class="method-grid">
+        <article class="method-card"><div class="method-title"><span>01</span><strong>Regressão OLS</strong></div><p>Relaciona o resultado aos regressores e informa coeficiente, incerteza e ajuste do modelo.</p></article>
+        <article class="method-card"><div class="method-title"><span>02</span><strong>Efeitos fixos</strong></div><p>Compara a mesma unidade ao longo do tempo e remove características permanentes do painel.</p></article>
+        <article class="method-card"><div class="method-title"><span>03</span><strong>Diferenças-em-diferenças</strong></div><p>Compara tratado e controle antes e depois da intervenção. Exige tendências paralelas defensáveis.</p></article>
+        <article class="method-card"><div class="method-title"><span>04</span><strong>Diferenças triplas</strong></div><p>Adiciona um terceiro grupo à comparação para separar melhor o efeito de interesse.</p></article>
+      </div>
+    </section>
+
+    <section id="fontes" class="sources-section shell">
+      <div class="section-heading">
+        <span>Fontes</span>
+        <h2>Dados que continuam na origem.</h2>
+        <p>O site organiza o caminho e consulta as fontes oficiais quando você monta a base.</p>
+      </div>
+      <p id="sourceCount" class="source-count"></p>
+      <div id="sourceGrid" class="source-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>© 2026 RotaDados Brasil · Todos os direitos reservados.</p>
+  </footer>
+
+  <dialog id="aboutDialog" class="modal">
+    <button class="modal-close" data-close type="button" aria-label="Fechar">×</button>
+    <span>RotaDados Brasil</span>
+    <h2>Um caminho mais curto até a base.</h2>
+    <p>Você começa pela pergunta de pesquisa, escolhe como medir cada conceito e, quando a fonte permite, monta a base diretamente a partir dos dados oficiais.</p>
+    <p>Não é preciso criar conta nem enviar arquivos pessoais.</p>
+  </dialog>
+
+  <script type="module" src="./assets/app.js"></script>
+</body>
+</html>
