@@ -24,7 +24,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
-USER_AGENT = "RotaDados-Brasil/1.0 (dados oficiais para pesquisa)"
+USER_AGENT = "SAFM/1.0 (dados oficiais para pesquisa)"
 
 
 def download(url: str, timeout: int = 120) -> bytes:
@@ -42,7 +42,7 @@ def download(url: str, timeout: int = 120) -> bytes:
 
 
 def download_cached(url: str, filename: str, timeout: int = 300) -> bytes:
-    cache = Path(tempfile.gettempdir()) / "rotadados-official-cache"
+    cache = Path(tempfile.gettempdir()) / "safm-official-cache"
     cache.mkdir(exist_ok=True)
     target = cache / filename
     if target.exists() and target.stat().st_size > 100_000:

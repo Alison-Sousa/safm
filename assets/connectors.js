@@ -46,11 +46,11 @@ function cacheId(url,type){
 async function readPersistent(url,type){
   if(typeof caches==='undefined'||typeof location==='undefined') return undefined;
   try{
-    const cache=await caches.open('rotadados-official-v2');
-    const key=new URL(`/__rotadados_cache__/${cacheId(url,type)}`,location.origin).toString();
+    const cache=await caches.open('safm-official-v2');
+    const key=new URL(`/__safm_cache__/${cacheId(url,type)}`,location.origin).toString();
     const hit=await cache.match(key);
     if(!hit) return undefined;
-    const saved=Number(hit.headers.get('x-rotadados-saved'));
+    const saved=Number(hit.headers.get('x-safm-saved'));
     if(!saved||Date.now()-saved>CACHE_TTL){await cache.delete(key);return undefined;}
     requestStats.cacheHits++;
     if(type==='arrayBuffer') return await hit.arrayBuffer();
@@ -64,10 +64,10 @@ async function writePersistent(url,type,data){
   try{
     const size=type==='arrayBuffer'?data.byteLength:JSON.stringify(data).length;
     if(size>17_000_000) return;
-    const cache=await caches.open('rotadados-official-v2');
-    const key=new URL(`/__rotadados_cache__/${cacheId(url,type)}`,location.origin).toString();
+    const cache=await caches.open('safm-official-v2');
+    const key=new URL(`/__safm_cache__/${cacheId(url,type)}`,location.origin).toString();
     const body=type==='arrayBuffer'?data:(type==='text'?data:JSON.stringify(data));
-    await cache.put(key,new Response(body,{headers:{'content-type':type==='json'?'application/json':'application/octet-stream','x-rotadados-saved':String(Date.now())}}));
+    await cache.put(key,new Response(body,{headers:{'content-type':type==='json'?'application/json':'application/octet-stream','x-safm-saved':String(Date.now())}}));
   }catch(_){ }
 }
 

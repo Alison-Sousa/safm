@@ -18,7 +18,7 @@ function downloadBlob(blob,filename){
   setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
 
-export function downloadCSV(rows,filename='rotadados.csv'){
+export function downloadCSV(rows,filename='safm.csv'){
   downloadBlob(new Blob([rowsToCSV(rows)],{type:'text/csv;charset=utf-8'}),filename);
 }
 
@@ -36,7 +36,7 @@ async function ensureSheetJS(){
   return xlsxLoading;
 }
 
-export async function downloadXLSX(rows,filename='rotadados.xlsx'){
+export async function downloadXLSX(rows,filename='safm.xlsx'){
   const XLSX=await ensureSheetJS();
   const ws=XLSX.utils.json_to_sheet(rows,{cellDates:true});
   const cols=[...new Set(rows.flatMap(r=>Object.keys(r)))];
@@ -67,7 +67,7 @@ async function ensureDuckDB(){
   return duckPromise;
 }
 
-export async function downloadParquet(rows,filename='rotadados.parquet'){
+export async function downloadParquet(rows,filename='safm.parquet'){
   const {db}=await ensureDuckDB();
   const csv=rowsToCSV(rows,',').replace(/^\ufeff/,'');
   const input=`rota_${Date.now()}.csv`, output=`rota_${Date.now()}.parquet`;

@@ -1,8 +1,11 @@
-# RotaDados Brasil
+# Sistema para análise automatizada de bases de dados financeiras e macroeconômicas
 
-O RotaDados Brasil ajuda estudantes, pesquisadores e analistas a transformar uma pergunta em uma base de dados pronta para trabalhar.
+O SAFM ajuda estudantes, pesquisadores e analistas a transformar uma pergunta em uma base de dados pronta para trabalhar.
 
 Você descreve o assunto, escolhe os indicadores e o período, e o próprio site organiza os dados oficiais. Depois, é possível explorar o resultado em gráficos, estimar modelos econométricos e baixar a base — sem precisar procurar arquivos em vários portais ou escrever código.
+
+
+Repositório oficial: https://github.com/Alison-Sousa/safm
 
 ## Como usar
 

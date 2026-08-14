@@ -203,7 +203,7 @@ async function startBuild(cfg){
 }
 
 function filename(ext){
-  const date=new Date().toISOString().slice(0,10); return `rotadados_${date}.${ext}`;
+  const date=new Date().toISOString().slice(0,10); return `safm_${date}.${ext}`;
 }
 
 function renderOutput(){

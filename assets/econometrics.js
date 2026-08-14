@@ -150,7 +150,7 @@ export function generateModelScript(language,config){
   const {method,outcome,regressors=[],entity,time,treatedValue,intervention,groupColumn,groupThreshold}=config;
   if(language==='r'){
     const rhs=regressors.length?regressors.map(rName).join(' + '):'1';
-    const setup=`# Gerado pelo RotaDados Brasil\n# Coloque este script ao lado de rotadados.csv\ndf <- read.csv2("rotadados.csv", check.names = FALSE)\n`;
+    const setup=`# Gerado pelo SAFM\n# Coloque este script ao lado de safm.csv\ndf <- read.csv2("safm.csv", check.names = FALSE)\n`;
     if(method==='ols') return `${setup}\nmodelo <- lm(${rName(outcome)} ~ ${rhs}, data = df)\n# Instale uma vez: install.packages(c("sandwich", "lmtest"))\nlmtest::coeftest(modelo, vcov. = sandwich::vcovHC(modelo, type = "HC1"))\n`;
     if(method==='fe') return `${setup}\n# Instale uma vez: install.packages("fixest")\nmodelo <- fixest::feols(${rName(outcome)} ~ ${rhs} | ${rName(entity)} + ${rName(time)}, data = df, vcov = ~${rName(entity)})\nsummary(modelo)\n`;
     const common=`${setup}\ndf$tratado <- as.integer(as.character(df[[${JSON.stringify(entity)}]]) == ${JSON.stringify(String(treatedValue))})\ndf$pos <- as.integer(as.character(df[[${JSON.stringify(time)}]]) >= ${JSON.stringify(String(intervention))})\n`;
@@ -158,7 +158,7 @@ export function generateModelScript(language,config){
     return `${common}df$grupo_alto <- as.integer(df[[${JSON.stringify(groupColumn)}]] >= ${Number(groupThreshold)})\n\n# Instale uma vez: install.packages("fixest")\nmodelo <- fixest::feols(${rName(outcome)} ~ tratado * pos * grupo_alto${regressors.length?' + '+rhs:''}, data = df, vcov = ~${rName(entity)})\nsummary(modelo)\n`;
   }
   const rhs=regressors.length?regressors.map(pyName).join(' + '):'1';
-  const setup=`# Gerado pelo RotaDados Brasil\n# pip install pandas statsmodels\nimport pandas as pd\nimport statsmodels.formula.api as smf\n\ndf = pd.read_csv("rotadados.csv", sep=";")\n`;
+  const setup=`# Gerado pelo SAFM\n# pip install pandas statsmodels\nimport pandas as pd\nimport statsmodels.formula.api as smf\n\ndf = pd.read_csv("safm.csv", sep=";")\n`;
   if(method==='ols') return `${setup}\nmodelo = smf.ols('${pyName(outcome)} ~ ${rhs}', data=df).fit(cov_type="HC1")\nprint(modelo.summary())\n`;
   if(method==='fe') return `${setup}\nmodelo = smf.ols('${pyName(outcome)} ~ ${rhs} + C(${pyName(entity)}) + C(${pyName(time)})', data=df).fit(cov_type="cluster", cov_kwds={"groups": df[${JSON.stringify(entity)}]})\nprint(modelo.summary())\n`;
   const common=`${setup}\ndf["tratado"] = (df[${JSON.stringify(entity)}].astype(str) == ${JSON.stringify(String(treatedValue))}).astype(int)\ndf["pos"] = (df[${JSON.stringify(time)}].astype(str) >= ${JSON.stringify(String(intervention))}).astype(int)\n`;
@@ -216,7 +216,7 @@ export function mountEconometricsLab(host,rows,{domain}={}){
       const result=method==='ols'?fitOLS(rows,config):method==='fe'?fitFixedEffects(rows,config):method==='did'?fitDID(rows,config):fitDDD(rows,config);
       if(method==='ddd') config.groupThreshold=result.groupThreshold;
       output.innerHTML=`${resultHtml(result)}<div class="script-downloads"><div><strong>Exportação opcional</strong><span>Se quiser repetir a análise fora do site, baixe a base em CSV e o script.</span></div><button type="button" data-script="r">Script R <em>.R</em></button><button type="button" data-script="python">Script Python <em>.py</em></button></div>`;
-      output.querySelectorAll('[data-script]').forEach(button=>button.addEventListener('click',()=>{const language=button.dataset.script;downloadText(generateModelScript(language,config),language==='r'?'modelo_rotadados.R':'modelo_rotadados.py');}));
+      output.querySelectorAll('[data-script]').forEach(button=>button.addEventListener('click',()=>{const language=button.dataset.script;downloadText(generateModelScript(language,config),language==='r'?'modelo_safm.R':'modelo_safm.py');}));
     }catch(error){message.innerHTML=`<div class="build-error"><strong>O modelo ainda não pode ser estimado.</strong><span>${esc(error.message)}</span></div>`;}
   };
   methodSelect.addEventListener('change',renderConfig);renderConfig();

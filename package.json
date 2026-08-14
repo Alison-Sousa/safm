@@ -1,1 +1,1 @@
-{"name":"rotadados-brasil","private":true,"type":"module","scripts":{"test":"node tests/engine.mjs && node tests/connectors.mjs && node tests/charts.mjs && node tests/econometrics.mjs && node tests/static.mjs"}}
+{"name":"safm","private":true,"type":"module","scripts":{"test":"node tests/engine.mjs && node tests/connectors.mjs && node tests/charts.mjs && node tests/econometrics.mjs && node tests/static.mjs"}}

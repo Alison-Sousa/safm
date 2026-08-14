@@ -16,7 +16,7 @@ export const handler = async (event) => {
     const start = Number(event.queryStringParameters?.start);
     const end = Number(event.queryStringParameters?.end);
     const ranged = Number.isInteger(start) && Number.isInteger(end) && start >= 0 && end >= start && end - start <= 2_500_000;
-    const headers = { 'User-Agent': 'RotaDadosBrasil/2.0' };
+    const headers = { 'User-Agent': 'SAFM/2.0' };
     if (ranged) headers.Range = `bytes=${start}-${end}`;
     const upstream = await fetch(url.toString(), { headers });
     const contentType = upstream.headers.get('content-type') || 'application/octet-stream';
